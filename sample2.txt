@@ -1,0 +1,55 @@
+production VMs:
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# Master node network interface
+allow-hotplug <your-nic-name>
+iface <your-nic-name> inet static
+    address 192.168.1.21/24
+    gateway 192.168.1.1
+    broadcast 192.168.1.255
+
+    # Static routes to worker pod CIDRs
+    up ip route add 10.244.1.0/24 via 192.168.1.22 dev <your-nic-name>
+    up ip route add 10.244.2.0/24 via 192.168.1.23 dev <your-nic-name>
+    down ip route del 10.244.1.0/24 via 192.168.1.22 dev <your-nic-name>
+    down ip route del 10.244.2.0/24 via 192.168.1.23 dev <your-nic-name>
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# Worker 1 network interface
+allow-hotplug <your-nic-name>
+iface <your-nic-name> inet static
+    address 192.168.1.22/24
+    gateway 192.168.1.1
+    broadcast 192.168.1.255
+
+    # Static routes to other nodes’ pod CIDRs
+    up ip route add 10.244.0.0/24 via 192.168.1.21 dev <your-nic-name>
+    up ip route add 10.244.2.0/24 via 192.168.1.23 dev <your-nic-name>
+    down ip route del 10.244.0.0/24 via 192.168.1.21 dev <your-nic-name>
+    down ip route del 10.244.2.0/24 via 192.168.1.23 dev <your-nic-name>
+
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# Worker 2 network interface
+allow-hotplug <your-nic-name>
+iface <your-nic-name> inet static
+    address 192.168.1.23/24
+    gateway 192.168.1.1
+    broadcast 192.168.1.255
+
+    # Static routes to other nodes’ pod CIDRs
+    up ip route add 10.244.0.0/24 via 192.168.1.21 dev <your-nic-name>
+    up ip route add 10.244.1.0/24 via 192.168.1.22 dev <your-nic-name>
+    down ip route del 10.244.0.0/24 via 192.168.1.21 dev <your-nic-name>
+    down ip route del 10.244.1.0/24 via 192.168.1.22 dev <your-nic-name>
+
+
