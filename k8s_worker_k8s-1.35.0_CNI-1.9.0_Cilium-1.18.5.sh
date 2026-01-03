@@ -8,11 +8,9 @@
 # - For worker node installation with Cilium as CNI
 # - Tested on Debian 13
 
-
-
 K8S_VERSION="1.35.0"
 CILIUM_VERSION="1.18.5"
-CNI_VERSION="v1.5.1"
+CNI_VERSION="v1.9.0"
 ARCH="amd64"
 
 echo "[1/7] Updating system, disabling swap..."
