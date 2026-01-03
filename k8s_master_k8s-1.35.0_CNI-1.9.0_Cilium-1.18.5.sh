@@ -38,7 +38,7 @@ systemctl status swap.target | head -n 10
 # sudo systemctl mask swap.target
 
 echo "[2/7] Installing prerequisite packages..."
-sudo apt install -y apt-transport-https ca-certificates curl gpg htop
+sudo apt install -y apt-transport-https ca-certificates curl gpg htop git
 
 echo "[3/7] Installing and configuring containerd..."
 sudo apt install -y containerd
