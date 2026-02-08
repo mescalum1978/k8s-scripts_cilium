@@ -131,4 +131,9 @@ kubectl -n kube-system wait --for=condition=Ready pod -l k8s-app=hubble-ui --tim
 echo "[6/6] Verifying Hubble status..."
 cilium hubble status
 
+echo "Install Cilium CRD's"
+kubectl apply --server-side=true -f https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.4.0/standard-install.yaml
+
+
+
 echo "Kubernetes $K8S_VERSION cluster ready with Cilium $CILIUM_VERSION network!"
