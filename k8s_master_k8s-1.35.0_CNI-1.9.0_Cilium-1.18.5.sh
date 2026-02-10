@@ -111,6 +111,7 @@ cilium install \
   --set k8sServiceHost=${MASTER_IP} \
   --set k8sServicePort=6443 \
   --set ipam.mode=kubernetes \
+  --set gatewayAPI.enabled=true \
   --set cni.binPath=/opt/cni/bin \
   --set cni.confPath=/etc/cni/net.d
 
