@@ -8,9 +8,9 @@
 # - For master node installation with Cilium as CNI
 # - Tested on Debian 13
 
-K8S_VERSION="1.35.0"
-CILIUM_VERSION="1.18.5"
-CNI_VERSION="v1.9.0"
+K8S_VERSION="1.35.3"
+CILIUM_VERSION="1.19.2"
+CNI_VERSION="v1.9.1"
 ARCH="amd64"
 MASTER_IP=$(hostname -I | awk '{print $1}')
 
